@@ -80,28 +80,6 @@ app.get("/register",(req,res)=>{
     res.render("register");
 });
 
-// app.post("/register", validateRegistration, (req,res) => {
-//     User.register(
-//         new User({
-//             username: req.body.username,
-//             email: req.body.email,
-//             phone: req.body.phone
-//         }),
-//         req.body.password,
-//         function(err,user) {
-//             if(err){
-//                 console.log(err);
-//                 return res.render("register", { 
-//                     errors: [{ field: 'general', message: err.message }]
-//                 });
-//             }
-//             passport.authenticate("local")(req,res,function(){
-//                 res.redirect("/login");
-//             });    
-//         }
-//     );
-// });
-
 app.post("/register", validateRegistration, (req,res) => {
     try{
         User.register(
