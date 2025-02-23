@@ -73,3 +73,22 @@
     font-size: large;
     max-width: fit-content;
   }
+
+  .error-message {
+    color: red;
+    margin: 5px 0;
+ }
+  .form-group {
+      margin-bottom: 15px;
+  }
+  .alert {
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+  }
+  .alert-danger {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+  }

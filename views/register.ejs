@@ -1,18 +1,58 @@
 <%- include('header'); %>
 <%- include('nav'); %>
-<main>
-<h3>
-    Sign Up
-</h3>
-<form action="/register" method="POST">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username">
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email">
-    <label for="phone">Phone</label>
-    <input type="text" name="phone" id="phone">
-    <button class="btn btn-success">Submit</button>
-</form>
-</main>
+<div class="container">
+    <h1>Sign Up</h1>
+    
+    <% if (typeof errors !== 'undefined') { %>
+        <div class="alert alert-danger">
+            <% errors.forEach(function(error) { %>
+                <p class="error-message" data-field="<%= error.field %>">
+                    <%= error.message %>
+                </p>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <form action="/register" method="POST" id="registerForm">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" 
+                   class="form-control" 
+                   id="username" 
+                   name="username" 
+                   required 
+                   pattern="^[a-zA-Z0-9_]{5,}$"
+                   title="Username must be at least 5 characters long and can only contain letters, numbers and underscore">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" 
+                   class="form-control" 
+                   id="password" 
+                   name="password" 
+                   required 
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}"
+                   title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" 
+                   class="form-control" 
+                   id="email" 
+                   name="email" 
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" 
+                   class="form-control" 
+                   id="phone" 
+                   name="phone">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
